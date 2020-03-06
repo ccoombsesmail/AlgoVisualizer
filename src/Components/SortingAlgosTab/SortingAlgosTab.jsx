@@ -26,6 +26,8 @@ const SortingAlgosTab = (props) => {
                     <Tab label="Insertion Sort" {...a11yProps(0)} />
                     <Tab label="Bubble Sort" {...a11yProps(1)} />
                     <Tab label="Quick Sort" {...a11yProps(2)} />
+                    <Tab label="Merge Sort" {...a11yProps(3)} />
+
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -36,6 +38,9 @@ const SortingAlgosTab = (props) => {
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <BarSort algoToUse="quicksort"></BarSort>           
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+                <BarSort algoToUse="mergesort"></BarSort>
             </TabPanel>
         </div>
     );
