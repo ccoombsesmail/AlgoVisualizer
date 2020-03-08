@@ -21,7 +21,7 @@ const SortingAlgosTab = (props) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" style={{ backgroundColor: 'black'}}>
+            <AppBar position="static" className = {classes.appbar}>
                 <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" >
                     <Tab label="Insertion Sort" {...a11yProps(0)} />
                     <Tab label="Bubble Sort" {...a11yProps(1)} />
@@ -79,12 +79,15 @@ function a11yProps(index) {
 
 const useStyles = makeStyles(theme => ({
     root: {
-        flexGrow: 1,
        // backgroundColor: theme.palette.background.paper,
        // backgroundColor: 'green',
-        height: "600px"
+        height: "700px"
 
     },
+    appbar: {
+        display: "flex",
+        backgroundColor: 'black'
+    }
 }));
 
 

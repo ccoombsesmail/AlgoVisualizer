@@ -32,7 +32,8 @@ const PrettoSlider = withStyles({
         height: 8,
         width: 300,
         marginRight: 10,
-        right: 10
+        right: 10,
+        display: "flex"
         //backgroundColor: ''
     },
     thumb: {

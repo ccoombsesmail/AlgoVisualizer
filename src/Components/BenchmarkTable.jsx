@@ -10,11 +10,31 @@ import Paper from '@material-ui/core/Paper';
 
 
 const useStyles = makeStyles({
+    root: {
+        paddingRight: "100px",
+        ['@media (max-width:780px)']: {
+            paddingRight: "0px",
+           alignSelf: "center",
+           maxWidth: "80vw"
+        }
+    // },
+    },
     table: {
     //    minWidth: 400,
     //    maxWidth: 600,
     //    alignSelf: "flex-start"
+
     },
+    head: {
+        backgroundColor: 'black',
+        color: 'white'
+    },
+    cell: {
+        color: 'white'
+
+    }
+
+
 });
 
 function createData(built_in, merge_sort, quick_sort, bubble_sort, insertion_sort) {
@@ -32,26 +52,26 @@ const BenchmarkTable = (props) => {
 
 
     return (
-        <TableContainer className={props.styling} >
+        <TableContainer className={classes.root} >
             <Table className={classes.table} aria-label="simple table">
-                <TableHead>
+                <TableHead className = {classes.head}>
                     <TableRow>
-                        <TableCell align="right">Built In Sort</TableCell>
-                        <TableCell align="right">Merge Sort</TableCell>
-                        <TableCell align="right">Quick Sort</TableCell>
-                        <TableCell align="right">Bubble Sort</TableCell>
-                        <TableCell align="right">Insertion Sort</TableCell>
+                        <TableCell className = {classes.cell} align="left">Built In Sort</TableCell>
+                        <TableCell className={classes.cell} align="left">Merge Sort</TableCell>
+                        <TableCell className={classes.cell} align="left">Quick Sort</TableCell>
+                        <TableCell className={classes.cell} align="left">Bubble Sort</TableCell>
+                        <TableCell className={classes.cell} align="left">Insertion Sort</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row, index) => (
                         <TableRow key={index+25}>
                         
-                            <TableCell key={index + 1} align="right">{row.built_in}</TableCell>
-                            <TableCell key={index + 2} align="right">{row.merge_sort}</TableCell>
-                            <TableCell key={index + 3}align="right">{row.quick_sort}</TableCell>
-                            <TableCell key={index + 4} align="right">{row.bubble_sort}</TableCell>
-                            <TableCell key={index + 5} align="right">{row.insertion_sort}</TableCell>
+                            <TableCell key={index + 1} align="left">{row.built_in}</TableCell>
+                            <TableCell key={index + 2} align="left">{row.merge_sort}</TableCell>
+                            <TableCell key={index + 3} align="left">{row.quick_sort}</TableCell>
+                            <TableCell key={index + 4} align="left">{row.bubble_sort}</TableCell>
+                            <TableCell key={index + 5} align="left">{row.insertion_sort}</TableCell>
 
                         </TableRow>
                     ))}

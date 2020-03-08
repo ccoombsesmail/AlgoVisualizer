@@ -5,10 +5,23 @@
      align-items: center; 
 }
 
-.input_table {
+/* .input_table {
     align-self: flex-start !important; 
     padding-right: 100px;
   
+} */
+
+.buttonSliderWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: inline-flex;
+}
+
+.sliders {
+    display: inline-flex;
 }
 
 .button {
@@ -41,10 +54,20 @@
 
 
 
-.bar {
 
-    background: rgb(2,0,36) !important;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(26,32,32,1) 18%, rgba(0,212,255,1) 100%) !important;
+@media only screen and (max-width: 600px) {
+  .sliders {
+    flex-direction: column;
+  }
+
+  .inputWrapper {
+    justify-content: center;
+    flex-direction: column;
+
+  }
+ 
+
+  /* .input_table {
+    flex-direction: column;
+    } */
 }
-
-
