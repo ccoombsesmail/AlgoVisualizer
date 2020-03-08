@@ -30,7 +30,9 @@ const PrettoSlider = withStyles({
     root: {
         color: 'black',
         height: 8,
-        width: 300
+        width: 300,
+        marginRight: 10,
+        right: 10
         //backgroundColor: ''
     },
     thumb: {
@@ -68,6 +70,7 @@ const CustomizedSlider = (props) => {
     var slider;
     var text
     if(props.size){
+       
         text= <Typography gutterBottom>Array Size</Typography>
         slider = <PrettoSlider step={props.step} max={props.max} onChange={(event, value) => props.sliderHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
     }else {
@@ -77,8 +80,10 @@ const CustomizedSlider = (props) => {
 
     return (
         <div className={classes.root}>
+            {/* <div className={props.styling}> */}
             {text}
             {slider}
+            {/* </div> */}
         </div>
     );
 }

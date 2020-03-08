@@ -31,10 +31,10 @@ const SortingAlgosTab = (props) => {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <BarSort algoToUse = "insertion"></BarSort>
+                <BarSort algoToUse = "insertionsort"></BarSort>
              </TabPanel>
             <TabPanel value={value} index={1}>
-                <BarSort algoToUse="bubble"></BarSort>
+                <BarSort algoToUse="bubblesort"></BarSort>
             </TabPanel>
             <TabPanel value={value} index={2}>
                 <BarSort algoToUse="quicksort"></BarSort>           
