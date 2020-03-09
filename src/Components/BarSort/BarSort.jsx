@@ -111,8 +111,8 @@ class BarSort extends Component {
                             <button className={styles.input, styles.button} onClick={() => this.bench(this.state.arr)} >  Benchmark </button>
                         </div>
                         <div className = {styles.sliders}>
-                            <SliderBar styling={styles.input} step = {1} max = {1000} size = {true} sliderHandle={this.resetArr.bind(this)} /> 
-                            <SliderBar  styling={styles.input} step = {.1} max={10000} size = {false} speedHandle = {this.changeSpeed.bind(this)} /> 
+                            <SliderBar styling={styles.input} step = {1} max = {800} size = {true} sliderHandle={this.resetArr.bind(this)} /> 
+                            <SliderBar  styling={styles.input} step = {.1} max={300} size = {false} speedHandle = {this.changeSpeed.bind(this)} /> 
                         </div>
                     </div>
                 </div>
