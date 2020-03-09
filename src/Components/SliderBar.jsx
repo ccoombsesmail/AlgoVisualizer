@@ -33,7 +33,9 @@ const PrettoSlider = withStyles({
         width: 300,
         marginRight: 10,
         right: 10,
-        display: "flex"
+        maxWidth: "100vw"
+
+
         //backgroundColor: ''
     },
     thumb: {
@@ -54,37 +56,52 @@ const PrettoSlider = withStyles({
     track: {
         height: 8,
         borderRadius: 4,
+        background: 'linear-gradient(to left, #2C5364, #203A43, #0F2027)',
+
+
     },
     rail: {
         height: 8,
         borderRadius: 4,
     },
+  
 })(Slider);
 
 
+// const styles = {
+
+//     slider: {
+//         display: "flex",
+//         flexDirection: "column",
+//         textAlign: "center",
+//         width: "10vw",
+//         justifyContent: "center"
+
+//     }
 
 
-
+// }
 
 const CustomizedSlider = (props) => {
     const classes = useStyles();
     var slider;
     var text
     if(props.size){
-       
-        text= <Typography gutterBottom>Array Size</Typography>
-        slider = <PrettoSlider step={props.step} max={props.max} onChange={(event, value) => props.sliderHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
+        text = <Typography   gutterBottom>Array Size</Typography>
+        slider = <PrettoSlider step={props.step} max={props.max} onChange={(event, value) => props.sliderHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={200} />
     }else {
         text = <Typography gutterBottom>Array Speed</Typography>
-        slider = <PrettoSlider step={props.step} max={props.max} onChange={(event, value) => props.speedHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={20} />
+        slider = <PrettoSlider step={props.step} max={props.max} onChange={(event, value) => props.speedHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={100} />
+
     }
 
     return (
         <div className={classes.root}>
-            {/* <div className={props.styling}> */}
+            <div className = "slider">
             {text}
             {slider}
-            {/* </div> */}
+            </div>
+
         </div>
     );
 }

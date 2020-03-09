@@ -18,10 +18,15 @@ class BarSort extends Component {
             arr: [190, 300, 222, 900, 400, 500, 600, 120, 140, 100, 200, 190, 70, 800, 700, 550, 650, 150, 90],
             size: 20,
             speed: 71,
-            benchmark_times: []
+            benchmark_times: [],
+            button_toggle: false
         }
     }
     
+
+
+    
+
 
     resetArr(new_size) {
         var new_arr = []
@@ -73,6 +78,10 @@ class BarSort extends Component {
         this.setState({benchmark_times: benches})
     }
 
+
+    
+ 
+
     changeSpeed(new_speed) {
         this.setState({speed: 1000/new_speed})
     }
@@ -86,28 +95,29 @@ class BarSort extends Component {
         var benches1 = <div></div>
         if (this.state.benchmark_times.length != 0 ){
             var benches = this.state.benchmark_times
-            benches1 = <BenchmarkTable styling= "input_table" built_in={benches[0].toFixed(4)} merge_sort={benches[1].toFixed(4)} 
+            benches1 = <BenchmarkTable built_in={benches[0].toFixed(4)} merge_sort={benches[1].toFixed(4)} 
                 quick_sort={benches[2].toFixed(4)} bubble_sort={benches[3].toFixed(4)} insertion_sort={benches[3].toFixed(4)} />
         }
 
         return (
             <div >
+
                 <div className = {styles.inputWrapper}> 
                     {benches1}
                     <div className = {styles.buttonSliderWrapper}>
                         <div className = {styles.buttons}>
-                            <button ref={this.resetRef} className={styles.input, styles.button} onClick={() => this.resetArr(this.state.size)} >  Reset </button>
-                            <button ref={this.sortRef} className={styles.input, styles.button} onClick={() => this.sort(this.state.arr)} >  Sort </button>
+                            <button ref = {this.resetRef} className={styles.input, styles.button} onClick={() => this.resetArr(this.state.size)} >  Reset </button>
+                            <button ref={this.sortRef}className={styles.input, styles.button} onClick={() => this.sort(this.state.arr)} >  Sort </button>
                             <button className={styles.input, styles.button} onClick={() => this.bench(this.state.arr)} >  Benchmark </button>
                         </div>
                         <div className = {styles.sliders}>
                             <SliderBar styling={styles.input} step = {1} max = {1000} size = {true} sliderHandle={this.resetArr.bind(this)} /> 
-                            <SliderBar styling={styles.input} step = {.1} max={300} size = {false} speedHandle = {this.changeSpeed.bind(this)} /> 
+                            <SliderBar  styling={styles.input} step = {.1} max={10000} size = {false} speedHandle = {this.changeSpeed.bind(this)} /> 
                         </div>
                     </div>
                 </div>
                 <div className = {styles.barWrapper} > 
-                    {this.state.arr.map((num, index) => <BarNode className={styles.bar} idName={index.toString()} key={index + 1} height={(num * .7).toString() + "px"} width= {2800/this.state.size +"px"} backgroundColor="black" />)}
+                    {this.state.arr.map((num, index) => <BarNode className={styles.bar} idName={index.toString()} key={index + 1} height={(num * .7).toString() + "px"} width={2800 / this.state.size + "px"} backgroundColor = "black" />)}
                 </div>
             </div>
         )

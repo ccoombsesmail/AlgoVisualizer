@@ -11,11 +11,13 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
     root: {
-        paddingRight: "100px",
+        paddingRight: "10px",
+        // maxWidth: "50vw",
         ['@media (max-width:780px)']: {
-            paddingRight: "0px",
+           paddingRight: "0px",
            alignSelf: "center",
-           maxWidth: "80vw"
+           maxWidth: "80vw",
+        
         }
     // },
     },

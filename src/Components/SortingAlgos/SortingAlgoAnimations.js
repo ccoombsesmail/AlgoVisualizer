@@ -7,6 +7,9 @@ export function execute_quicksort_animations(arr, speed, resetRef, sortRef, call
     quicksort(arr, 0, arr.length - 1, animations);
     resetRef.current.setAttribute("disabled", "disabled")
     sortRef.current.setAttribute("disabled", "disabled")
+    document.getElementsByClassName("slider")[0].style['display'] = 'none';
+    document.getElementsByClassName("slider")[1].style['display'] = 'none';
+
     var i = 0;
     var interval = setInterval(() => {
         var k = i
@@ -35,6 +38,8 @@ export function execute_quicksort_animations(arr, speed, resetRef, sortRef, call
         if (i === animations.length - 1) {
             resetRef.current.removeAttribute("disabled")
             sortRef.current.removeAttribute("disabled")
+            document.getElementsByClassName("slider")[0].style['display'] = 'flex';
+            document.getElementsByClassName("slider")[1].style['display'] = 'flex';
             callbenches(bench_arr)
             clearInterval(interval);
         }
@@ -61,6 +66,8 @@ export function execute_mergesort_animations(arr, speed, resetRef, sortRef, call
     //Disable reset and sort buttons while animating
     resetRef.current.setAttribute("disabled", "disabled")
     sortRef.current.setAttribute("disabled", "disabled")
+    document.getElementsByClassName("slider")[0].style['display'] = 'none';
+    document.getElementsByClassName("slider")[1].style['display'] = 'none';
 
 
     var i = 0;
@@ -87,6 +94,8 @@ export function execute_mergesort_animations(arr, speed, resetRef, sortRef, call
         if (i === animations.length - 1) {
             resetRef.current.removeAttribute("disabled")
             sortRef.current.removeAttribute("disabled")
+            document.getElementsByClassName("slider")[0].style['display'] = 'flex';
+            document.getElementsByClassName("slider")[1].style['display'] = 'flex';
             callbenches(bench_arr)
             clearInterval(interval);
         }
@@ -107,6 +116,10 @@ export function execute_simplesort_animations(arr, speed, resetRef, sortRef, typ
     var bench_arr = [...arr]
     resetRef.current.setAttribute("disabled", "disabled");
     sortRef.current.setAttribute("disabled", "disabled");
+    document.getElementsByClassName("slider")[0].style['display'] = 'none';
+    document.getElementsByClassName("slider")[1].style['display'] = 'none';
+
+
 
     var animations;
 
@@ -138,6 +151,8 @@ export function execute_simplesort_animations(arr, speed, resetRef, sortRef, typ
         if (i === animations.length - 1) {
             resetRef.current.removeAttribute("disabled")
             sortRef.current.removeAttribute("disabled")
+            document.getElementsByClassName("slider")[0].style['display'] = 'flex';
+            document.getElementsByClassName("slider")[1].style['display'] = 'flex';
             callbenches(bench_arr)
             clearInterval(interval);
         }

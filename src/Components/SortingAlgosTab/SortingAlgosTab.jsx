@@ -22,8 +22,8 @@ const SortingAlgosTab = (props) => {
     return (
         <div className={classes.root}>
             <AppBar position="static" className = {classes.appbar}>
-                <Tabs value={value} onChange={handleChange} aria-label="simple tabs example" >
-                    <Tab label="Insertion Sort" {...a11yProps(0)} />
+                <Tabs variant = "scrollable" scrollButtons = "on" value={value} onChange={handleChange} aria-label="simple tabs example" >
+                    <Tab  label="Insertion Sort" {...a11yProps(0)} />
                     <Tab label="Bubble Sort" {...a11yProps(1)} />
                     <Tab label="Quick Sort" {...a11yProps(2)} />
                     <Tab label="Merge Sort" {...a11yProps(3)} />
@@ -79,14 +79,21 @@ function a11yProps(index) {
 
 const useStyles = makeStyles(theme => ({
     root: {
-       // backgroundColor: theme.palette.background.paper,
-       // backgroundColor: 'green',
-        height: "700px"
+        flexGrow: 1,    
+        // height: "700px"
 
     },
     appbar: {
         display: "flex",
-        backgroundColor: 'black'
+        width: "100%",
+        // backgroundColor: 'black',
+        // backgroundColor: "#0F2027",
+        // background: "-webkit - linear - gradient(to right, #2C5364, #203A43, #0F2027)",  
+        background: 'linear-gradient(to left, #2C5364, #203A43, #0F2027)'
+    },
+    tabs: {
+        display: "flex"
+
     }
 }));
 
