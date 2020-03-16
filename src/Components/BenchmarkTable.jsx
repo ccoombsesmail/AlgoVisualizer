@@ -11,10 +11,10 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
     root: {
-        paddingRight: "10px",
+        marginRight: "10px",
         // maxWidth: "50vw",
         ['@media (max-width:780px)']: {
-           paddingRight: "0px",
+           marginRight: "0px",
            alignSelf: "center",
            maxWidth: "80vw",
         
@@ -49,7 +49,7 @@ const BenchmarkTable = (props) => {
 
     const rows = [
         createData(props.built_in, props.merge_sort, props.quick_sort, props.bubble_sort, props.insertion_sort),
- 
+
     ];
 
 
