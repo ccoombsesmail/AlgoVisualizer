@@ -32,8 +32,8 @@ const PrettoSlider = withStyles({
         height: 8,
         width: 300,
         marginRight: 10,
-        right: 10,
-        maxWidth: "100vw"
+        maxWidth: "40vw",
+     
 
 
         //backgroundColor: ''
