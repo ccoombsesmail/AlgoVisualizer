@@ -14,9 +14,11 @@ const useStyles = makeStyles({
         marginRight: "10px",
         // maxWidth: "50vw",
         ['@media (max-width:780px)']: {
-           marginRight: "0px",
+           margin: "10px 0",
+        
            alignSelf: "center",
            maxWidth: "80vw",
+           maxHeight: "20vw"
         
         }
     // },
@@ -32,7 +34,11 @@ const useStyles = makeStyles({
         color: 'white'
     },
     cell: {
-        color: 'white'
+        color: 'white',
+        whiteSpace: 'nowrap',
+        ['@media (max-width:780px)']: {
+        fontSize: '12px',
+        }
 
     }
 

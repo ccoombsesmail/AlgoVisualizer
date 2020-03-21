@@ -32,7 +32,7 @@ const PrettoSlider = withStyles({
         height: 8,
         width: 300,
         marginRight: 10,
-        maxWidth: "40vw",
+        maxWidth: "50vw",
      
 
 
@@ -64,6 +64,9 @@ const PrettoSlider = withStyles({
         height: 8,
         borderRadius: 4,
     },
+    // typo: {
+    //     width: "100px"
+    // }
   
 })(Slider);
 
@@ -87,10 +90,10 @@ const CustomizedSlider = (props) => {
     var slider;
     var text
     if(props.size){
-        text = <Typography   gutterBottom>Array Size</Typography>
+        text = <Typography  gutterBottom>Array Size</Typography>
         slider = <PrettoSlider step={props.step} max={props.max} onChange={(event, value) => props.sliderHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={100} />
     }else {
-        text = <Typography gutterBottom>Array Speed</Typography>
+        text = <Typography  gutterBottom>Array Speed</Typography>
         slider = <PrettoSlider step={props.step} max={props.max} onChange={(event, value) => props.speedHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={100} />
 
     }

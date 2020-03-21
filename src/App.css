@@ -12,3 +12,19 @@
     padding: 0 !important;
 
 }
+
+@media only screen and (max-width: 600px) {
+
+  .MuiTypography-gutterBottom   {
+    position: relative;
+    align-self: center;
+    width: 30vw; 
+    margin: auto  !important;
+  }  
+  .MuiSlider-root {
+      padding: 10px !important;
+  }
+
+ 
+
+}

@@ -105,14 +105,12 @@ class BarSort extends Component {
                 quick_sort={benches[2].toFixed(4)} bubble_sort={benches[3].toFixed(4)} insertion_sort={benches[3].toFixed(4)} />
         }
 
-        var bars;
-        var resizeSlider;
-        if (window.innerWidth < 600) {
-            resizeSlider = <SliderBar styling={styles.input} step={1} max={150} size={true} sliderHandle={this.resetArr.bind(this)} /> 
-            bars = this.state.arr.map((num, index) => <BarNode className={styles.bar} idName={index.toString()} key={index + 1} height={(num * .045).toString() + "vh"} width={2800 / this.state.size + "px"} backgroundColor="black" />) 
-        }else {
-            resizeSlider = <SliderBar styling={styles.input} step={1} max={900} size={true} sliderHandle={this.resetArr.bind(this)} /> 
-            bars = this.state.arr.map((num, index) => <BarNode className={styles.bar} idName={index.toString()} key={index + 1} height={(num * .7).toString() + "px"} width={2800 / this.state.size + "px"} backgroundColor="black" />)
+     
+        var maxSize = 800
+        var scaleFactor = .0007
+        if (window.innerWidth < 700) {
+            maxSize = 150
+            scaleFactor = .00058
         }
 
         return (
@@ -127,14 +125,13 @@ class BarSort extends Component {
                             <button className={styles.input, styles.button} onClick={() => this.bench(this.state.arr)} >  Benchmark </button>
                         </div>
                         <div className = {styles.sliders}>
-                            {resizeSlider}
+                            <SliderBar styling={styles.input} step={1} max={maxSize} size={true} sliderHandle={this.resetArr.bind(this)} /> 
                             <SliderBar  styling={styles.input} step = {.1} max={10000} size = {false} speedHandle = {this.changeSpeed.bind(this)} /> 
                         </div>
                     </div>
                 </div>
                 <div className = {styles.barWrapper} > 
-                   {/* {this.state.arr.map((num, index) => <BarNode className={styles.bar} idName={index.toString()} key={index + 1} height={(num * .7).toString() + "px"} width={2800 / this.state.size + "px"} backgroundColor = "black" />) */}
-                    {bars}
+                    {this.state.arr.map((num, index) => <BarNode className={styles.bar} idName={index.toString()} key={index + 1} height={(num * scaleFactor * window.innerHeight).toString() + "px"} width={2800 / this.state.size + "px"} backgroundColor="black" />)}
                 </div>
             </div>
         )

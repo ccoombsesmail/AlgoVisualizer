@@ -73,7 +73,8 @@
   }
 
   .sliders {
-    /* flex-direction: column; */
+    flex-direction: column;
+    justify-content: flex-end;
     max-width: 95vw;
   }
 
