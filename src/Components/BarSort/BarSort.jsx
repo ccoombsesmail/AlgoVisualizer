@@ -21,12 +21,15 @@ class BarSort extends Component {
             benchmark_times: [],
             button_toggle: false
         }
+
+        this.onWindowResize = this.onWindowResize.bind(this)
     }
     
 
-    // componentDidMount() {
-    //     window.addEventListener('resize', this.onWindowResize);
-    // }
+    componentDidMount() {
+        window.addEventListener('resize', this.onWindowResize);
+
+    }
 
     // componentWillUnmount() {
     //     window.removeEventListener('resize', this.onWindowResize);
@@ -96,8 +99,18 @@ class BarSort extends Component {
         this.resetArr(this.state.size)
     }
 
+    onWindowResize() {
+        this.setState({size: 20})
+        console.log(window.innerWidth)
+
+    }
+
 
     render() {
+        window.onresize = this.onWindowResize;
+
+
+
         var benches1 = <div></div>
         if (this.state.benchmark_times.length != 0 ){
             var benches = this.state.benchmark_times

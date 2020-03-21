@@ -28,3 +28,29 @@
  
 
 }
+
+
+.App:-webkit-full-screen {
+      background-color: blue;
+
+  width: 10vw;
+  height: 100vh;
+}
+
+.App:-moz-full-screen {
+  width: 10vw;
+  height: 100vh;
+}
+
+.App:-ms-fullscreen {
+  width: 10vw;
+  height: 10vh;
+}
+
+.App:fullscreen {
+        background-color: blue;
+
+  width: 10vw;
+  height: 100vh;
+}
+ 
