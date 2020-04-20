@@ -136,7 +136,7 @@ export function merge(left, right, l, mid, animations) {
     var next_empty_pos = l;
 
     while (i <= left.length && j <= right.length) {
-        if (i == left.length && j == right.length) { break; }
+        if (i === left.length && j === right.length) { break; }
 
         if (i == left.length) {
             merge_animations.push([mid + j, next_empty_pos, true])
@@ -145,10 +145,10 @@ export function merge(left, right, l, mid, animations) {
             j++;
             continue;
         }
-        if (j == right.length) {
+        if (j === right.length) {
 
             var in_queue_idx = getIndexIfValInQueue(left_queue, next_empty_pos)
-            if (in_queue_idx == -1) {
+            if (in_queue_idx === -1) {
                 nodes[next_empty_pos - l].index = left_queue[0].index
                 left_queue.push(nodes[next_empty_pos - l])
                 merge_animations.push([left_queue.shift().index, next_empty_pos, true])
@@ -166,11 +166,11 @@ export function merge(left, right, l, mid, animations) {
 
         animations.push([l + i, mid + j, false])
         if (left[i] <= right[j]) {
-            if (left_queue.length == 0) {
+            if (left_queue.length === 0) {
                 merge_animations.push([l + i, next_empty_pos, true])
             } else {
                 var in_queue_idx = getIndexIfValInQueue(left_queue, next_empty_pos)
-                if (next_empty_pos == left_queue[0].index) {
+                if (next_empty_pos === left_queue[0].index) {
                     merge_animations.push([left_queue.shift().index, next_empty_pos, true])
                 } else if (in_queue_idx == -1) {
                     nodes[next_empty_pos - l].index = left_queue[0].index

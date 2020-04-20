@@ -31,9 +31,9 @@ class BarSort extends Component {
 
     }
 
-    // componentWillUnmount() {
-    //     window.removeEventListener('resize', this.onWindowResize);
-    // }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.onWindowResize);
+    }
     
 
 
@@ -79,6 +79,8 @@ class BarSort extends Component {
             case "bubblesort":
                 this.animate_bubblesort("bubble")
                 break;
+            default:
+                console.log("No Algo Selected")
             }      
     }
 
@@ -101,7 +103,6 @@ class BarSort extends Component {
 
     onWindowResize() {
         this.setState({size: 20})
-        console.log(window.innerWidth)
 
     }
 
@@ -128,7 +129,6 @@ class BarSort extends Component {
 
         return (
             <div >
-
                 <div className = {styles.inputWrapper}> 
                     {benches1}
                     <div className = {styles.buttonSliderWrapper}>
