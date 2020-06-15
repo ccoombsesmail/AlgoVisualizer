@@ -160,8 +160,8 @@ export function renderDynamicGraph() {
         oldSVG.parentNode.removeChild(oldSVG)
     }
     var width = window.innerWidth-100,
-        height = 1500,
-        radius = 7;
+        height = 1500
+      
 
     const forceX = d3.forceX(width / 2).strength(0.165)
     const forceY = d3.forceY(height / 2).strength(0.165)
@@ -351,7 +351,6 @@ export function renderStaticGraph() {
 
 
 function node_click(d) {
-    // console.log(d.index)
     console.log(this.state.adj)
     if (this.state.targetNodeIdx === null && this.state.sourceNodeIdx === null) {
         d3.select(d3.selectAll("circle")._groups[0][d.index]).style("fill", "purple")
@@ -370,12 +369,8 @@ function node_click(d) {
         d3.select(d3.selectAll("circle")._groups[0][d.index]).style("fill", "red")
         this.setState({ targetNodeIdx: d.index })
 
-        // else if (this.state.sourceNodeIdx !== null && this.state.targetNodeIdx !== null && d3.selectAll("circle")._groups[0][d.index].style.fill === "purple") {
-        // this.setState({ sourceNodeIdx: null, targetNodeIdx: null })
-        //  d3.select(d3.selectAll("circle")._groups[0][d.index]).style("fill", "black")
     }
-    // this.setState( {prevNode : d.index})
-    // console.log(d)
+  
 
 }
 
@@ -446,8 +441,6 @@ export function generateRandomStaticGraph() {
     edgeNumbers[0] = [0, 1, 2, 3, 4]
 
     let totalEdgeCount = levels[levels.length - 2] + edgeStarts[edgeStarts.length - 2]
-    // console.log(totalEdgeCount)
-    // console.log(edgeStarts)
     let edgeCount = 5
     let count = 6
     for (let i = 0; i < edgeStarts.length-1; i++) {

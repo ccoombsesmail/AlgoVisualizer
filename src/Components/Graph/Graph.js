@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import * as d3 from 'd3';
 import {animate_dijkstras} from "./AnimateGraphAlgos.js"
 import { generateRandomGraph, generateRandomStaticGraph, renderDynamicGraph, renderStaticGraph} from "../Util/util.js"
 import "./graphs.css";
+import SliderBar from '../SliderBar'
 // import Force from 'd3-force';
 
 
@@ -20,50 +20,34 @@ class Graph extends Component {
             sourceNodeIdx: null,
             targetNodeIdx: null,
             graph: null,
-            staticGraph: null
-
+            staticGraph: null,
+            speed: 20
             }
-
-        // generateRandomGraph = generateRandomGraph.bind(this)
-        this.calcShortestPath = this.calcShortestPath.bind(this)
+      this.makeDynamicGraph = this.makeDynamicGraph.bind(this)
+      this.makeStaticGraph = this.makeStaticGraph.bind(this)
+      this.calcShortestPath = this.calcShortestPath.bind(this)
     
     }
 
 
-    // calcNodeLocations(nodes, v, originX, originY, edgeLength ){
-
-    //     if (nodes[v].fx < originX && nodes[v].fy < originY ) {
-    //         nodes.push({ fx: nodes[v].fx - edgeLength * Math.sin(Math.random() * Math.PI), fy: nodes[v].fy - edgeLength * Math.sin(Math.random() * Math.PI) })
-    //     } else if (nodes[v].fx < originX && nodes[v].fy > originY) {
-    //         nodes.push({ fx: nodes[v].fx - edgeLength * Math.sin(Math.random() * Math.PI), fy: nodes[v].fy + edgeLength * Math.sin(Math.random() * Math.PI) })
-    //     }else if (nodes[v].fx > originX && nodes[v].fy < originY) {
-    //         nodes.push({ fx: nodes[v].fx + edgeLength * Math.sin(Math.random() * Math.PI), fy: nodes[v].fy - edgeLength * Math.sin(Math.random() * Math.PI) })
-    //     }else {
-    //         nodes.push({ fx: nodes[v].fx + edgeLength * Math.sin(Math.random() * Math.PI), fy: nodes[v].fy + edgeLength * Math.sin(Math.random() * Math.PI) })
-    //     }
-
-    // }
+    componentDidMount() {
+      this.makeDynamicGraph()
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
-        // console.log(nextState.sourceNodeIdx)
-        // console.log(nextState.targetNodeIdx)
-        if (nextState.sourceNodeIdx !== null || nextState.targetNodeIdx !== null ) {
-            return false;
-        }
-        return true;
+      if (nextState.sourceNodeIdx !== null || nextState.targetNodeIdx !== null || nextState.speed !== this.state.speed ) {
+          return false;
+      }
+      return true;
     }
     
 
     componentDidUpdate() {
-
-
         if (this.state.graph !== null) {
             renderDynamicGraph.call(this, null)
         }else if (this.state.staticGraph !== null){
              renderStaticGraph.call(this, null)
         }
-
-     
     }
 
 
@@ -74,10 +58,8 @@ class Graph extends Component {
         this.setState({sourceNodeIdx: null, targetNodeIdx: null}, generateRandomStaticGraph.bind(this))
     }
 
-
-
     calcShortestPath() {
-        animate_dijkstras(this.state.adj, this.state.weights, this.state.sourceNodeIdx, this.state.targetNodeIdx, this.state.edgeNumbers)
+        animate_dijkstras(this.state.adj, this.state.weights, this.state.sourceNodeIdx, this.state.targetNodeIdx, this.state.edgeNumbers, this.state.speed)
 
         // let path = []
         // let animations = []
@@ -98,18 +80,49 @@ class Graph extends Component {
 
     }
 
+  changeSpeed(value) {
+    this.setState({speed: value})
+  }
+
 
     render() {
 
 
         return (
+          <div className="graphWrapper">
+            <div className="graphControlsWrapper">
+
+           
+            <ul className="legend">
+              <li>
+                <div style={{ backgroundColor: 'purple' }} class="circle" />
+                <span> - Source Node</span>
+              </li>
+              <li>
+                <div style={{ backgroundColor: 'red' }} class="circle" />
+                <span> - Destination Node</span>
+              </li>
+              <li>
+                <div style={{ backgroundColor: 'green' }} class="circle" />
+                <span> - Finished Calculating Shortest Distance to Source</span>
+              </li>
+              <li>
+                <div style={{ backgroundColor: 'orange' }} class="circle" />
+                <span> - Current Best Shortest Distance Estimate to Source</span>
+              </li>
+            </ul>
+            <div className="graphBtnsWrapper">
+              <button className="graphButtons" onClick={this.makeDynamicGraph}>Random Graph</button>
+              <button className="graphButtons" onClick={this.makeStaticGraph}>Generate Static Graph</button>
+              <button className="graphButtons" onClick={this.calcShortestPath}>Find Shortest Path</button>
+            </div>
+              <SliderBar step={1} max={100} size={false} speedHandle={this.changeSpeed.bind(this)} /> 
+
+            </div>
             <div id= "my_dataviz" >
-                <button className="graphButtons" onClick={this.makeDynamicGraph.bind(this)}>Random Graph</button>
-                <button className="graphButtons" onClick={this.makeStaticGraph.bind(this)}>Generate Static Graph</button>
-                <button className="graphButtons" onClick = {this.calcShortestPath}>Find Shortest Path</button>
                
             </div>
-
+          </div>
            
         )
     }

@@ -25,14 +25,11 @@ const SortingAlgosTab = (props) => {
         <div className={classes.root}>
             <AppBar position="static" className = {classes.appbar}>
                 <Tabs variant = "scrollable" scrollButtons = "on" value={value} onChange={handleChange} aria-label="simple tabs example" >
-                    {console.log(a11yProps(0))}
-                    <Tab  label="Insertion Sort" {...a11yProps(0)} />
+                    <Tab label="Insertion Sort" {...a11yProps(0)} />
                     <Tab label="Bubble Sort" {...a11yProps(1)} />
                     <Tab label="Quick Sort" {...a11yProps(2)} />
                     <Tab label="Merge Sort" {...a11yProps(3)} />
-                    <Tab label="Dijkstra's" {...a11yProps(3)} />
-
-
+                    <Tab label="Dijkstra's" {...a11yProps(4)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>

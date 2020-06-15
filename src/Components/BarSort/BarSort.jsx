@@ -11,9 +11,6 @@ class BarSort extends Component {
 
     constructor(props) {
         super(props);
-        this.resetRef = React.createRef();
-        this.sortRef = React.createRef();
-
         this.state = {
             arr: [190, 300, 222, 900, 400, 500, 600, 120, 140, 100, 200, 190, 70, 800, 700, 550, 650, 150, 90],
             size: 20,
@@ -21,8 +18,10 @@ class BarSort extends Component {
             benchmark_times: [],
             button_toggle: false
         }
-
-        this.onWindowResize = this.onWindowResize.bind(this)
+      this.resetRef = React.createRef();
+      this.sortRef = React.createRef();
+      this.benchRef = React.createRef();
+      this.onWindowResize = this.onWindowResize.bind(this)
     }
     
 
@@ -48,19 +47,19 @@ class BarSort extends Component {
 
 
     animate_merge_sort(){
-        execute_mergesort_animations(this.state.arr, this.state.speed, this.resetRef, this.sortRef, this.bench.bind(this))
+        execute_mergesort_animations(this.state.arr, this.state.speed, this.resetRef, this.sortRef, this.benchRef, this.bench.bind(this))
     }
 
     animate_quicksort() {
-        execute_quicksort_animations(this.state.arr, this.state.speed, this.resetRef, this.sortRef, this.bench.bind(this))
+      execute_quicksort_animations(this.state.arr, this.state.speed, this.resetRef, this.sortRef, this.benchRef, this.bench.bind(this))
     }
 
     animate_insertionsort(type) {
-        execute_simplesort_animations(this.state.arr, this.state.speed, this.resetRef, this.sortRef, type, this.bench.bind(this))
+      execute_simplesort_animations(this.state.arr, this.state.speed, this.resetRef, this.sortRef, this.benchRef, type, this.bench.bind(this))
     }
 
     animate_bubblesort(type) {
-        execute_simplesort_animations(this.state.arr, this.state.speed, this.resetRef, this.sortRef, type, this.bench.bind(this))
+      execute_simplesort_animations(this.state.arr, this.state.speed, this.resetRef, this.sortRef, this.benchRef, type, this.bench.bind(this))
     }
 
 
@@ -109,11 +108,8 @@ class BarSort extends Component {
 
     render() {
         window.onresize = this.onWindowResize;
-
-
-
         var benches1 = <div></div>
-        if (this.state.benchmark_times.length != 0 ){
+        if (this.state.benchmark_times.length !== 0 ){
             var benches = this.state.benchmark_times
             benches1 = <BenchmarkTable built_in={benches[0].toFixed(4)} merge_sort={benches[1].toFixed(4)} 
                 quick_sort={benches[2].toFixed(4)} bubble_sort={benches[3].toFixed(4)} insertion_sort={benches[3].toFixed(4)} />
@@ -133,13 +129,13 @@ class BarSort extends Component {
                     {benches1}
                     <div className = {styles.buttonSliderWrapper}>
                         <div className = {styles.buttons}>
-                            <button ref = {this.resetRef} className={styles.input, styles.button} onClick={() => this.resetArr(this.state.size)} >  Reset </button>
-                            <button ref={this.sortRef}className={styles.input, styles.button} onClick={() => this.sort(this.state.arr)} >  Sort </button>
-                            <button className={styles.input, styles.button} onClick={() => this.bench(this.state.arr)} >  Benchmark </button>
+                            <button ref={this.resetRef} className={styles.input, styles.button} onClick={() => this.resetArr(this.state.size)} >  Reset </button>
+                            <button ref={this.sortRef} className={styles.input, styles.button} onClick={() => this.sort(this.state.arr)} >  Sort </button>
+                            <button ref={this.benchRef} className={styles.input, styles.button} onClick={() => this.bench(this.state.arr)} > Benchmark </button>
                         </div>
                         <div className = {styles.sliders}>
                             <SliderBar styling={styles.input} step={1} max={maxSize} size={true} sliderHandle={this.resetArr.bind(this)} /> 
-                            <SliderBar  styling={styles.input} step = {.1} max={10000} size = {false} speedHandle = {this.changeSpeed.bind(this)} /> 
+                            <SliderBar styling={styles.input} step = {.1} max={1000} size={false} speedHandle = {this.changeSpeed.bind(this)} /> 
                         </div>
                     </div>
                 </div>

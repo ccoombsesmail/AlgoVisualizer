@@ -1,20 +1,19 @@
-/* .node {
-    fill: #ccc;
-    stroke: #fff;
-    stroke-width: 2px;
-} */
+.graphWrapper{
+  display: flex;
+  flex-direction: column;
+}
 
-/* 
-body {
-    overflow-y: scroll !important;    
-    height: 2000px;
+.graphControlsWrapper{
+  display: flex;
+  justify-content: space-between;
+}
 
-}  */
-
+.graphBtnsWrapper{
+  display: flex;
+}
 #my_dataviz{
-    overflow-y: scroll !important;
-
-    height: 3000px;
+    /* overflow-y: scroll !important; */
+    height: 2000px;
 }
 .links {
     stroke: #777;
@@ -23,13 +22,39 @@ body {
 
 .links-path {
     stroke: purple;
-    stroke-width: 4.1px;
+    stroke-width: 3px;
+    z-index: 99999;
+    opacity: 1;
 }
 
 /* .node-selected {
     fill: 
 } */
 
+
+.legend {
+  /* position: fixed;
+  top: 48px;
+  left: 0;
+   */
+}
+
+.legend > li {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.legend > li > span {
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
 
 .graphButtons {
     

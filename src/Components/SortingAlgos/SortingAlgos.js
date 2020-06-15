@@ -172,7 +172,7 @@ export function merge(left, right, l, mid, animations) {
                 var in_queue_idx = getIndexIfValInQueue(left_queue, next_empty_pos)
                 if (next_empty_pos === left_queue[0].index) {
                     merge_animations.push([left_queue.shift().index, next_empty_pos, true])
-                } else if (in_queue_idx == -1) {
+                } else if (in_queue_idx === -1) {
                     nodes[next_empty_pos - l].index = left_queue[0].index
                     left_queue.push(nodes[next_empty_pos - l])
                     merge_animations.push([left_queue.shift().index, next_empty_pos, true])
@@ -189,9 +189,9 @@ export function merge(left, right, l, mid, animations) {
             i++;
         } else {
             var in_queue_idx = getIndexIfValInQueue(left_queue, next_empty_pos)
-            if (mid + j == next_empty_pos) {
+            if (mid + j === next_empty_pos) {
                 merge_animations.push([mid + j, next_empty_pos, true])
-            } else if (in_queue_idx == -1) {
+            } else if (in_queue_idx === -1) {
                 nodes[next_empty_pos - l].index = mid + j
                 left_queue.push(nodes[next_empty_pos - l])
                 merge_animations.push([mid + j, next_empty_pos, true])
@@ -215,7 +215,7 @@ export function merge(left, right, l, mid, animations) {
 export function getIndexIfValInQueue(queue, next_pos) {
 
     for (var i = 0; i < queue.length; i++) {
-        if (queue[i].index == next_pos) {
+        if (queue[i].index === next_pos) {
             return i
         }
     }
@@ -330,14 +330,14 @@ function merge_bench(left, right) {
     var i = 0
     var j = 0
     while (i <= left.length && j <= right.length) {
-        if (i == left.length && j == right.length) { break; }
+        if (i === left.length && j === right.length) { break; }
 
-        if (i == left.length) {
+        if (i === left.length) {
             merged_arr.push(right[j]);
             j++;
             continue;
         }
-        if (j == right.length) {
+        if (j === right.length) {
             merged_arr.push(left[i]);
             i++;
             continue;

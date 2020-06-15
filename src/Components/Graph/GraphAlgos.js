@@ -73,7 +73,6 @@ class PriorityQueue {
 
     while (pq.heap.length > 1) {
         let currNode = pq.extractMin()[0]
-        // console.log(currNode)
         if (visited.has(currNode)) {
             continue
         }
