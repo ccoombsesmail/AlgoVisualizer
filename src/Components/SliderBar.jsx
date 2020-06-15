@@ -94,7 +94,7 @@ const CustomizedSlider = (props) => {
         slider = <PrettoSlider step={props.step} max={props.max} onChange={(event, value) => props.sliderHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={100} />
     }else {
         text = <Typography  gutterBottom>Algorithm Speed</Typography>
-        slider = <PrettoSlider min = {1} step={props.step} max={props.max} onChange={(event, value) => props.speedHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={100} />
+        slider = <PrettoSlider min = {1} step={props.step} max={props.max} onChange={(event, value) => props.speedHandle(value)} valueLabelDisplay="auto" aria-label="pretto slider" defaultValue={80} />
 
     }
 
