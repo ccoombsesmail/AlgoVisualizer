@@ -351,7 +351,6 @@ export function renderStaticGraph() {
 
 
 function node_click(d) {
-    console.log(this.state.adj)
     if (this.state.targetNodeIdx === null && this.state.sourceNodeIdx === null) {
         d3.select(d3.selectAll("circle")._groups[0][d.index]).style("fill", "purple")
         this.setState({ sourceNodeIdx: d.index })
@@ -393,12 +392,7 @@ export function generateRandomStaticGraph() {
         edgeStarts.push(edgeStarts[edgeStarts.length - 1] + nodesInlevel)
         levels.push(nodesInlevel * 2)
     }
-    // levels[levels.length-1] = levels[levels.length-1]/2
-    console.log(levels)
-    // edgeStarts[edgeStarts.length - 1] = edgeStarts[edgeStarts.length-1]/2
-    // console.log(levels)
-    // console.log(edgeStarts)
-    // [5, 10, 20, 40, 80]
+
     let edgeLength = 60;
     let originX = window.innerWidth / 2
     let originY = window.innerHeight / 1.2
@@ -429,7 +423,6 @@ export function generateRandomStaticGraph() {
     }
 
 
-    // console.log(nodes)
     edges.push({ source: 0, target: 1 })
     edges.push({ source: 0, target: 2 })
     edges.push({ source: 0, target: 3 })
@@ -445,13 +438,10 @@ export function generateRandomStaticGraph() {
     let count = 6
     for (let i = 0; i < edgeStarts.length-1; i++) {
     
-                // [t1, t2] = [count-15, count]
-                // console.log(t1,t2, "here")
         for (let j = edgeStarts[i]; j < edgeStarts[i] + levels[i]; j++) {
             let [t1, t2, t3] = [count, count+1 , count -  Math.floor(Math.random() * 3)]
           
             if (Math.max(t1, t2, t3) < totalEdgeCount) {
-                // console.log(j, t1,t2,t3)
                 adj.push([t1, t2, t3])
                 weights.push([nodes[t1].distance, nodes[t2].distance, nodes[t3].distance])
                 edgeNumbers[j] = [edgeCount, edgeCount + 1, edgeCount + 2]

@@ -5,28 +5,31 @@ import { dijkstras } from "./GraphAlgos"
 
 
 
-export function animate_dijkstras(adj, weights, s, t, edgeNumbers, speed) {
+export function animate_dijkstras(adj, weights, s, t, edgeNumbers, speed, openNoPathModal, randomRef, staticRef, shortestRef) {
 
     let animations = []
     let path = []
     let stuff = dijkstras(adj, weights, s, t, animations, edgeNumbers)
 
     if (stuff === -1) {
-        console.log("No Path")
+      openNoPathModal()
     } else {
-        let dist = stuff[0]
-        let prev = stuff[1]
-        calcPath(s, t, prev, path)
-        run_dijkstra_animations(animations, path, adj, edgeNumbers,s, t, speed)
-        // this.colorPath(path)
-        // // this.generateRandomGraph()
+      // let dist = stuff[0]
+      let prev = stuff[1]
+      calcPath(s, t, prev, path)
+      run_dijkstra_animations(animations, path, adj, edgeNumbers, s, t, speed, randomRef, staticRef, shortestRef)
+      // this.colorPath(path)
+      // // this.generateRandomGraph()
     }
 
 
 
 }
-function run_dijkstra_animations(animations, path, adj, edgeNumbers, s, t, speed) {
-
+function run_dijkstra_animations(animations, path, adj, edgeNumbers, s, t, speed, randomRef, staticRef, shortestRef) {
+  randomRef.current.setAttribute("disabled", "disabled");
+  staticRef.current.setAttribute("disabled", "disabled");
+  shortestRef.current.setAttribute("disabled", "disabled");
+  document.getElementsByClassName("slider")[0].style['display'] = 'none';
     let i = 1
     const animate = function () {
         let node = d3.select(d3.selectAll("circle")._groups[0][animations[i][1]])
@@ -62,6 +65,10 @@ function run_dijkstra_animations(animations, path, adj, edgeNumbers, s, t, speed
           })
           d3.select(d3.selectAll("circle")._groups[0][s]).style("opacity", 1)
            setTimeout(()=> colorPath(path, adj, edgeNumbers, s, t), 0)
+          randomRef.current.removeAttribute("disabled")
+          staticRef.current.removeAttribute("disabled")
+          shortestRef.current.removeAttribute("disabled")
+          document.getElementsByClassName("slider")[0].style['display'] = 'flex';
         }
 
     }

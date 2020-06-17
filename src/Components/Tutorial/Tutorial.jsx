@@ -28,7 +28,7 @@ const Tutorial = ({ closeModal }) => {
     case 3:
       contents = <>
         <h1>Find Shotest Path</h1>
-        <p>Step 3: Click the Find Shorest Path button</p>
+        <p>Step 3: Click the Find Shortest Path button</p>
         <p>Not Every Source/Target node pair has a path!</p>
         < FaHandPointDown size={30} />
         <img alt='' src={require('../../assets/TutorialStep3.png')} className={classes.tutorialImg} />
@@ -54,14 +54,16 @@ const Tutorial = ({ closeModal }) => {
 
 
   return (
-    <div className={classes.modalBg} onClick={closeModal}>
-      <div className={classes.modalChild} onClick={e => e.stopPropagation()}>
+    // <div className={classes.modalBg} onClick={closeModal}>
+    //   <div className={classes.modalChild} onClick={e => e.stopPropagation()}>
+      <>
          {contents}
         <span className={classes.left} onClick={pageLeft}>< FaArrowLeft size={30} /></span>
         <span className={classes.right} onClick={pageRight}>< FaArrowRight size={30} /></span>
         <span className={classes.exit} onClick={closeModal}>X</span>
-      </div>
-    </div>
+      </>
+    //   </div>
+    // </div>
 
   )
 }

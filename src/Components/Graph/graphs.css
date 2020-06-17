@@ -4,6 +4,8 @@
 }
 
 .graphControlsWrapper{
+  position: sticky;
+  top: 48px;
   display: flex;
   justify-content: space-between;
 }
