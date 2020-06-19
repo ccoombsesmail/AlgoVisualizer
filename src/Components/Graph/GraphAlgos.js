@@ -63,42 +63,35 @@ class PriorityQueue {
 
 
  export function dijkstras(adj, weight, s, t, animations, edgeNumbers) {
-    let visited = new Set()
-    let dist = Array(adj.length).fill(10**9)
-    let pq = new PriorityQueue()
-    let prev = Array(adj.length).fill(0)
+  let visited = new Set()
+  let dist = Array(adj.length).fill(Infinity)
+  let pq = new PriorityQueue()
+  let prev = Array(adj.length).fill(0)
 
-    dist[s] = 0
-    pq.addNode([s, 0])
+  dist[s] = 0
+  pq.addNode([s, 0])
 
-    while (pq.heap.length > 1) {
-        let currNode = pq.extractMin()[0]
-        if (visited.has(currNode)) {
-            continue
-        }
-        animations.push([prev[currNode], currNode, edgeNumbers[currNode], true])
-        visited.add(currNode)
-        if (currNode === t){
-            // calcPath(s,t,prev, path)
-            console.log(animations)
-            return [dist[currNode], prev]
-        }
-        for (let i = 0; i < adj[currNode].length; i++) {
-            let node = adj[currNode][i]
-            if (dist[node] > dist[currNode] + weight[currNode][i]){
-                animations.push([currNode, node, edgeNumbers[currNode][i], false])
-                prev[node] = currNode
-                dist[node] = dist[currNode] + weight[currNode][i]
-                pq.addNode([node, dist[node]])
-            }
-
-        }
-
+  while (pq.heap.length > 1) {
+    let currNode = pq.extractMin()[0]
+    if (visited.has(currNode)) {
+        continue
     }
-
-    return -1
-
-
+    animations.push([prev[currNode], currNode, edgeNumbers[currNode], true])
+    visited.add(currNode)
+    if (currNode === t){
+        return [dist[currNode], prev]
+    }
+    for (let i = 0; i < adj[currNode].length; i++) {
+        let node = adj[currNode][i]
+        if (dist[node] > dist[currNode] + weight[currNode][i]){
+            animations.push([currNode, node, edgeNumbers[currNode][i], false])
+            prev[node] = currNode
+            dist[node] = dist[currNode] + weight[currNode][i]
+            pq.addNode([node, dist[node]])
+        }
+    }
+  }
+  return -1
  }
 
  

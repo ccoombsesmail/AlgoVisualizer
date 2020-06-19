@@ -31,17 +31,15 @@ function run_dijkstra_animations(animations, path, adj, edgeNumbers, s, t, speed
   shortestRef.current.setAttribute("disabled", "disabled");
   document.getElementsByClassName("slider")[0].style['display'] = 'none';
     let i = 1
-    const animate = function () {
+    const animate = () => {
         let node = d3.select(d3.selectAll("circle")._groups[0][animations[i][1]])
         let line = d3.select(d3.selectAll("line")._groups[0][animations[i][2]])
-        // d3.select(d3.selectAll("circle")._groups[0][animations[i][1]]).style("fill", "orange")
         if (animations[i][3] === true) {
             node.style("fill", "green")
 
         } else {
             node.style("fill", "orange")
             line.style("stroke", "orange")
-
         }
 
         let k = i
@@ -51,7 +49,6 @@ function run_dijkstra_animations(animations, path, adj, edgeNumbers, s, t, speed
 
 
         i += 1
-        // console.log(animations[i][1])
         if (i < animations.length - 1) {
             setTimeout(() => {
               window.requestAnimationFrame(animate);

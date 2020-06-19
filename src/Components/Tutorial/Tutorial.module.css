@@ -27,7 +27,8 @@
 
 
 .modalChild > h1 {
-  color: #002147;
+  /* color: #002147; */
+  color:white;
   font-size: 35px;
   margin-bottom: 20px;
   margin-top: 10px;
@@ -36,18 +37,7 @@
   animation-duration: 1.5s;
 }
 
-.modalChild > p {
-  width: 35vw;
-  color: #002147;
-  font-size: 19px;
-  margin-bottom: 10px;
-  animation-name: fadeIn;
-  animation-timing-function: ease-in;
-  animation-delay: .4s;
-  animation-duration: 1.5s;
-  animation-fill-mode: forwards;
-  opacity: 0;
-}
+
 
 .tutorialImg {
   margin-top: 10px;

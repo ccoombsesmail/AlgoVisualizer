@@ -40,11 +40,17 @@ class Graph extends Component {
 
 
   componentDidMount() {
+    this.shortestRef.current.setAttribute("disabled", "disabled");
     this.makeDynamicGraph()
     
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    if (nextState.sourceNodeIdx !== null && nextState.targetNodeIdx !== null) {
+      this.shortestRef.current.removeAttribute("disabled")
+    }else {
+      this.shortestRef.current.setAttribute("disabled", "disabled");
+    }
     if (nextState.sourceNodeIdx !== null || nextState.targetNodeIdx !== null || nextState.speed !== this.state.speed ) {
         return false;
     }
